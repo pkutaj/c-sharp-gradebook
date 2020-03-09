@@ -2,20 +2,17 @@ using System;
 using System.Collections.Generic;
 
 namespace GradeBook
-
 {
-    class Book
+
+    public abstract class Book : NamedObject, IBook
     {
-        public Book() // SAME NAME && NO RETURN TPE
+        public Book(string name) : base(name)
         {
-            grades = new List<double>();
         }
 
-        public void AddGrade(double grade)
-        {
-            grades.Add(grade);
-        }
+        public abstract event GradeAddedDelegate GradeAdded;
 
-        List<double> grades;
+        public abstract void AddGrade(double grade);
+        public abstract Stats GetStats();
     }
 }
